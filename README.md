@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/nodraw-icon.png" width="128" alt="NoDraw icon">
+  <img src="assets/nodraw-lockup.png" width="420" alt="NoDraw">
 </p>
 
 # NoDraw
