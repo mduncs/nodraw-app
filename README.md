@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/nodraw-icon.png" width="128" alt="NoDraw icon">
+</p>
+
 # NoDraw
 
 NoDraw is a personal media-archive project for the Mac. Its DNA is half
