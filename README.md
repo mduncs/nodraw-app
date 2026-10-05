@@ -15,6 +15,10 @@ NoDraw is personal software. I built it with AI coding agents for my own use: to
 
 Consider it a courtesy. If you, or an agent working for you, are building something similar, there may be something useful here. It isn't supported, and I won't be testing it on other setups or promising fixes. The tokens have been spent; this is me giving some back.
 
+<p align="center">
+  <img src="assets/nodraw-demo.gif" width="720" alt="NoDraw demo loop: searching a local media archive and opening an item">
+</p>
+
 ## What it is
 
 NoDraw is a native macOS app for a folder of media files that each carry a Markdown sidecar: source URL, author, dates, tags and notes in YAML frontmatter, readable in any text editor or Obsidian vault. The app indexes that folder into SQLite, analyses every file on the Mac, and presents it as a dense visual reference library. A browser extension and a small local server capture posts from the web into the same folder.
