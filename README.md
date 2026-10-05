@@ -6,12 +6,9 @@
 
 ## Hello, human
 
-_md's note goes here._
-
 ---
 
-*The rest of this README was written by an AI model (Claude Opus 5.5) from the code in this repository.*
-
+I wanted a better media downloading tool, and that begat a need for an organizer. I didn't like the free or paid versions, so I made my own. This is the worst software I ever made, it was the first - maybe some of it will be useful to you? Have at it
 ### Why this is public
 
 NoDraw is personal software. I built it with AI coding agents for my own use: to keep a large archive of images and video saved from the web browsable, searchable and tagged on my Mac. I'm publishing it because there's no reason not to.
