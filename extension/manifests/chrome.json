@@ -1,0 +1,140 @@
+{
+  "manifest_version": 3,
+  "name": "nodraw",
+  "version": "1.3.6",
+  "description": "media downloader - save videos, images, galleries locally",
+  "minimum_chrome_version": "120",
+
+  "permissions": [
+    "activeTab",
+    "alarms",
+    "cookies",
+    "storage",
+    "contextMenus",
+    "notifications",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "*://twitter.com/*",
+    "*://x.com/*",
+    "*://bsky.app/*",
+    "*://www.youtube.com/*",
+    "*://youtube.com/*",
+    "*://youtu.be/*",
+    "*://www.reddit.com/*",
+    "*://old.reddit.com/*",
+    "*://reddit.com/*",
+    "*://*.flickr.com/*",
+    "*://*.deviantart.com/*",
+    "*://*.artstation.com/*",
+    "*://*.pinterest.com/*",
+    "*://*.pinterest.co.uk/*",
+    "*://*.pinterest.ca/*",
+    "*://*.pinterest.de/*",
+    "*://*.pinterest.fr/*",
+    "*://artsandculture.google.com/*",
+    "*://*.metmuseum.org/*",
+    "*://*.britishmuseum.org/*",
+    "*://*.rijksmuseum.nl/*",
+    "*://commons.wikimedia.org/*",
+    "*://*.nga.gov/*",
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "64": "icons/icon-64.png",
+      "96": "icons/icon-96.png",
+      "128": "icons/icon-128.png",
+      "256": "icons/icon-256.png"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://twitter.com/*", "*://x.com/*"],
+      "js": ["content-twitter.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://bsky.app/*"],
+      "js": ["content-bluesky.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://www.youtube.com/*", "*://youtube.com/*", "*://youtu.be/*"],
+      "js": ["content-youtube.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://www.reddit.com/*", "*://old.reddit.com/*", "*://reddit.com/*"],
+      "js": ["content-reddit.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://*.flickr.com/*",
+        "*://*.deviantart.com/*",
+        "*://*.artstation.com/*",
+        "*://*.pinterest.com/*",
+        "*://*.pinterest.co.uk/*",
+        "*://*.pinterest.ca/*",
+        "*://*.pinterest.de/*",
+        "*://*.pinterest.fr/*",
+        "*://artsandculture.google.com/*",
+        "*://*.metmuseum.org/*",
+        "*://*.britishmuseum.org/*",
+        "*://*.rijksmuseum.nl/*",
+        "*://commons.wikimedia.org/*",
+        "*://*.nga.gov/*"
+      ],
+      "js": ["content-gallery.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+
+  "commands": {
+    "quick-save": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Quick save current page"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png",
+    "256": "icons/icon-256.png"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "debug.html",
+        "debug.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

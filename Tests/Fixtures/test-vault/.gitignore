@@ -1,0 +1,14 @@
+# Keep .md sidecars (they're small and useful for testing)
+# Ignore binary media files (regenerate or copy from real archive)
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.mov
+*.webm
+*.gif
+*.webp
+*.heic
+.media-test.sqlite
+.media-test.sqlite-wal
+.media-test.sqlite-shm

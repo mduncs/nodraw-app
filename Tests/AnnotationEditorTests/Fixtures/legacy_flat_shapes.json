@@ -1,0 +1,34 @@
+{
+    "shapes": [
+        {
+            "rectangle": {
+                "id": "11111111-1111-1111-1111-111111111111",
+                "rect": {"x": 0.1, "y": 0.2, "width": 0.3, "height": 0.4},
+                "style": {"strokeColor": 4283782911, "strokeWidth": 3}
+            }
+        },
+        {
+            "ellipse": {
+                "id": "22222222-2222-2222-2222-222222222222",
+                "rect": {"x": 0.5, "y": 0.5, "width": 0.2, "height": 0.2},
+                "style": {"strokeColor": 1321795839, "strokeWidth": 3}
+            }
+        },
+        {
+            "arrow": {
+                "id": "33333333-3333-3333-3333-333333333333",
+                "from": {"x": 0.1, "y": 0.1},
+                "to": {"x": 0.9, "y": 0.9},
+                "style": {"strokeColor": 4293796607, "strokeWidth": 3}
+            }
+        },
+        {
+            "text": {
+                "id": "44444444-4444-4444-4444-444444444444",
+                "position": {"x": 0.5, "y": 0.8},
+                "content": "Legacy text annotation",
+                "style": {"fontSize": 16, "textColor": 4294967295, "backgroundColor": 128, "fontWeight": "regular"}
+            }
+        }
+    ]
+}

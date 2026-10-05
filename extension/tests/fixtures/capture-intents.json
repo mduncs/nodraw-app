@@ -1,0 +1,69 @@
+[
+  {
+    "name": "page",
+    "input": { "kind": "page", "targetUrl": "https://example.com/post", "page": { "title": "A post" } }
+  },
+  {
+    "name": "image",
+    "input": { "kind": "media", "targetUrl": "https://example.com/image.jpg", "sourcePageUrl": "https://example.com/post", "media": { "type": "image", "alt": "Example" } }
+  },
+  {
+    "name": "link",
+    "input": { "kind": "link", "targetUrl": "https://example.net/linked", "sourcePageUrl": "https://example.com/post" }
+  },
+  {
+    "name": "selection",
+    "input": { "kind": "selection", "targetUrl": "https://example.com/post", "selection": { "text": "Selected sentence", "html": "<p>Selected sentence</p>" } }
+  },
+  {
+    "name": "twitter-nested-quotes",
+    "input": {
+      "kind": "page",
+      "targetUrl": "https://x.com/outer/status/200",
+      "options": {
+        "saveMode": "full",
+        "platform": "twitter",
+        "siteData": {
+          "mediaType": "twitter",
+          "twitterQuoted": true,
+          "tweetContent": {
+            "text": "Outer post",
+            "hasImage": true,
+            "hasVideo": false,
+            "hasGif": false,
+            "imageUrls": ["https://pbs.twimg.com/media/own.jpg?name=orig"],
+            "media": [{"kind": "image", "url": "https://pbs.twimg.com/media/own.jpg?name=orig"}]
+          },
+          "quotes": [
+            {"level": 1, "url": "https://x.com/a/status/201", "author": "A", "handle": "@a", "text": "First quote", "media": [{"kind": "image", "url": "https://pbs.twimg.com/media/first.jpg?name=orig"}]},
+            {"level": 2, "url": "https://x.com/b/status/202", "author": "B", "handle": "@b", "text": "Nested GIF", "media": [{"kind": "gif", "url": "https://video.twimg.com/tweet_video/Nested123.mp4"}]}
+          ]
+        }
+      }
+    }
+  },
+  {
+    "name": "twitter-gif",
+    "input": {
+      "kind": "page",
+      "targetUrl": "https://x.com/outer/status/500",
+      "options": {
+        "saveMode": "quick",
+        "platform": "twitter",
+        "siteData": {
+          "mediaType": "gif",
+          "twitterQuoted": false,
+          "tweetContent": {
+            "text": "A GIF",
+            "hasImage": false,
+            "hasVideo": false,
+            "hasGif": true,
+            "gifUrl": "https://video.twimg.com/tweet_video/Gif_123.mp4",
+            "media": [{"kind": "gif", "url": "https://video.twimg.com/tweet_video/Gif_123.mp4"}]
+          },
+          "quotes": []
+        }
+      }
+    }
+  }
+]

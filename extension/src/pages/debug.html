@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>URL Saver Debug Panel</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+      font-size: 13px;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      margin: 0;
+      min-width: 600px;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0 0 16px 0;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .status-online { background: #4ade80; }
+    .status-offline { background: #f87171; }
+
+    .section {
+      margin: 16px 0;
+      padding: 12px;
+      background: #252525;
+      border-radius: 6px;
+      border: 1px solid #333;
+    }
+    .section-title {
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .metric {
+      background: #2a2a2a;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .metric-label {
+      color: #888;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+    .metric-value {
+      color: #4ade80;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .metric-value.warning { color: #fbbf24; }
+    .metric-value.error { color: #f87171; }
+
+    .timing-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #333;
+    }
+    .timing-row:last-child { border-bottom: none; }
+    .timing-label { color: #aaa; }
+    .timing-values {
+      display: flex;
+      gap: 16px;
+    }
+    .timing-stat {
+      text-align: right;
+    }
+    .timing-stat-label {
+      color: #666;
+      font-size: 10px;
+    }
+    .timing-stat-value {
+      color: #4ade80;
+    }
+
+    .error-item {
+      padding: 8px;
+      background: #2a1a1a;
+      border-left: 3px solid #f87171;
+      margin-bottom: 8px;
+      border-radius: 0 4px 4px 0;
+    }
+    .error-type {
+      color: #f87171;
+      font-weight: bold;
+    }
+    .error-message {
+      color: #aaa;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .error-count {
+      color: #888;
+      float: right;
+    }
+
+    .request-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .request-item {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px;
+      border-bottom: 1px solid #333;
+      gap: 10px;
+    }
+    .request-item:hover {
+      background: #2a2a2a;
+    }
+    .request-status {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .request-status.success { background: #4ade80; }
+    .request-status.failed { background: #f87171; }
+    .request-url {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #aaa;
+    }
+    .request-type {
+      color: #666;
+      font-size: 11px;
+      width: 80px;
+    }
+    .request-duration {
+      color: #4ade80;
+      width: 60px;
+      text-align: right;
+    }
+    .request-time {
+      color: #666;
+      font-size: 11px;
+      width: 70px;
+      text-align: right;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+    }
+    button:hover { background: #2563eb; }
+    button.secondary {
+      background: #444;
+    }
+    button.secondary:hover { background: #555; }
+    button.danger {
+      background: #dc2626;
+    }
+    button.danger:hover { background: #b91c1c; }
+    button.toggle-on {
+      background: #16a34a;
+    }
+
+    .uptime {
+      color: #666;
+      font-size: 11px;
+      margin-left: auto;
+    }
+
+    .no-data {
+      color: #666;
+      font-style: italic;
+      padding: 8px;
+    }
+
+    .capture-list {
+      display: grid;
+      gap: 8px;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+    .capture-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px 12px;
+      padding: 10px;
+      background: #2a2a2a;
+      border: 1px solid #363636;
+      border-radius: 5px;
+    }
+    .capture-summary { min-width: 0; }
+    .capture-heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .capture-state {
+      flex-shrink: 0;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #444;
+      color: #ddd;
+      font-size: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .capture-state.failed,
+    .capture-state.stalled { background: #7f1d1d; color: #fecaca; }
+    .capture-state.queued { background: #713f12; color: #fde68a; }
+    .capture-state.completed,
+    .capture-state.saved,
+    .capture-state.duplicate { background: #14532d; color: #bbf7d0; }
+    .capture-title,
+    .capture-url {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .capture-title { color: #ddd; }
+    .capture-url { color: #888; font-size: 11px; }
+    .capture-detail { color: #777; font-size: 11px; margin-top: 5px; }
+    .capture-error { color: #fca5a5; font-size: 11px; margin-top: 5px; }
+    .capture-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .capture-actions button { padding: 5px 8px; }
+    button:disabled { cursor: wait; opacity: .55; }
+    .section-help { color: #777; font-size: 11px; margin: -4px 0 10px; }
+    .inbox-feedback { min-height: 16px; color: #fbbf24; font-size: 11px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>
+    <span>URL Saver Debug</span>
+    <span id="server-status" class="status-indicator status-offline"></span>
+    <span class="uptime" id="uptime">--</span>
+  </h1>
+
+  <div class="section">
+    <div class="section-title">Request Stats</div>
+    <div class="metric-grid">
+      <div class="metric">
+        <div class="metric-label">Total</div>
+        <div class="metric-value" id="total">0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Success</div>
+        <div class="metric-value" id="success">0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Failed</div>
+        <div class="metric-value" id="failed">0</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Success Rate</div>
+        <div class="metric-value" id="rate">--</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Timing (ms)</div>
+    <div id="timing-data">
+      <div class="no-data">No timing data yet</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Errors</div>
+    <div id="errors-data">
+      <div class="no-data">No errors recorded</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Recent Requests</div>
+    <div class="request-list" id="requests-data">
+      <div class="no-data">No requests yet</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Durable Capture Inbox</div>
+    <div class="section-help">Queued and failed captures stay here across browser restarts until retried or dismissed.</div>
+    <div class="capture-list" id="capture-inbox-data">
+      <div class="no-data">No saved captures</div>
+    </div>
+    <div class="inbox-feedback" id="capture-inbox-feedback" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="button-row">
+    <button id="refresh-button">Refresh</button>
+    <button id="reset-metrics-button" class="secondary">Reset Metrics</button>
+    <button id="debug-toggle" class="secondary">Debug Mode: OFF</button>
+  </div>
+
+  <script src="debug.js"></script>
+</body>
+</html>
