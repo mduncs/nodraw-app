@@ -1,0 +1,76 @@
+[
+  {
+    "name": "article metadata and json-ld graph",
+    "document": {
+      "url": "https://example.com/articles/field-notes?ref=home",
+      "title": "Fallback title",
+      "language": "en-US",
+      "selectors": {
+        "link[rel=\"canonical\"]": { "href": "https://example.com/articles/field-notes" },
+        "meta[property=\"og:title\"]": { "content": "Field Notes" },
+        "meta[name=\"author\"]": { "content": "Ada Example" },
+        "meta[property=\"og:description\"]": { "content": "A careful field report." },
+        "meta[property=\"article:published_time\"]": { "content": "2026-06-04T12:00:00Z" },
+        "meta[property=\"og:site_name\"]": { "content": "Example Review" },
+        "meta[property=\"og:image\"]": { "content": "https://example.com/field-notes.jpg" }
+      },
+      "jsonLd": [
+        { "@graph": [{ "@type": "Article" }, { "@type": ["Person", "Thing"] }] },
+        "{not valid json"
+      ]
+    },
+    "selection": {
+      "text": "A selected sentence.",
+      "html": "<strong>A selected sentence.</strong>"
+    },
+    "expected": {
+      "sourcePageUrl": "https://example.com/articles/field-notes?ref=home",
+      "page": {
+        "title": "Field Notes",
+        "canonicalUrl": "https://example.com/articles/field-notes",
+        "author": "Ada Example",
+        "description": "A careful field report.",
+        "publishedAt": "2026-06-04T12:00:00Z",
+        "siteName": "Example Review",
+        "language": "en-US",
+        "image": "https://example.com/field-notes.jpg",
+        "schemaTypes": ["Article", "Person", "Thing"]
+      },
+      "selection": {
+        "text": "A selected sentence.",
+        "html": "<strong>A selected sentence.</strong>"
+      }
+    }
+  },
+  {
+    "name": "document and standard metadata fallbacks",
+    "document": {
+      "url": "https://plain.example/post",
+      "title": "Plain document title",
+      "language": "",
+      "selectors": {
+        "meta[name=\"description\"]": { "content": "Standard description" },
+        "meta[property=\"article:author\"]": { "content": "Backup Author" },
+        "time[datetime]": { "datetime": "2025-03-02" },
+        "meta[name=\"twitter:image\"]": { "content": "https://plain.example/card.png" }
+      },
+      "jsonLd": [{ "@type": "WebPage" }]
+    },
+    "selection": null,
+    "expected": {
+      "sourcePageUrl": "https://plain.example/post",
+      "page": {
+        "title": "Plain document title",
+        "canonicalUrl": "",
+        "author": "Backup Author",
+        "description": "Standard description",
+        "publishedAt": "2025-03-02",
+        "siteName": "",
+        "language": "",
+        "image": "https://plain.example/card.png",
+        "schemaTypes": ["WebPage"]
+      },
+      "selection": null
+    }
+  }
+]

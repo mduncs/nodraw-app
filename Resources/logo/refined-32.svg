@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- The original NoDraw orange: #ff8900 at the centre fading to #f68103, as on the icon before the dev tile. -->
+  <radialGradient id="tile" gradientUnits="userSpaceOnUse" cx="512" cy="512" r="386">
+    <stop offset="0" stop-color="#ff8900"/>
+    <stop offset="1" stop-color="#f68103"/>
+  </radialGradient>
+  <rect x="100" y="100" width="824" height="824" rx="184" fill="url(#tile)"/>
+  <!-- 32px grid: 2px brackets and stems, with a 2px gap above and below the n. -->
+  <g transform="scale(32)" fill="#ffffff">
+    <polygon points="8,8 14,8 14,10 10,10 10,14 8,14"/>
+    <polygon points="24,24 18,24 18,22 22,22 22,18 24,18"/>
+  </g>
+  <g transform="scale(32)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="butt">
+    <path d="M14 20 V12"/>
+    <path d="M14 15.5 A2.5 2.5 0 0 1 19 15.5 V20"/>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+{
+    "layers": [
+        {
+            "id": "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA",
+            "name": "Background Masks",
+            "isVisible": true,
+            "opacity": 1.0,
+            "blendMode": "normal",
+            "shapes": [
+                {
+                    "mask": {
+                        "id": "55555555-5555-5555-5555-555555555555",
+                        "maskData": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==",
+                        "bounds": {"x": 0.0, "y": 0.0, "width": 1.0, "height": 1.0},
+                        "blendMode": "maskRemove",
+                        "opacity": 1.0,
+                        "featherRadius": 2.0
+                    }
+                }
+            ]
+        },
+        {
+            "id": "BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB",
+            "name": "Annotations",
+            "isVisible": true,
+            "opacity": 0.8,
+            "blendMode": "normal",
+            "shapes": [
+                {
+                    "rectangle": {
+                        "id": "66666666-6666-6666-6666-666666666666",
+                        "rect": {"x": 0.1, "y": 0.2, "width": 0.3, "height": 0.4},
+                        "style": {"strokeColor": 4283782911, "strokeWidth": 5, "fillColor": 2147483776}
+                    }
+                },
+                {
+                    "freeform": {
+                        "id": "77777777-7777-7777-7777-777777777777",
+                        "points": [
+                            {"x": 0.1, "y": 0.1},
+                            {"x": 0.2, "y": 0.15},
+                            {"x": 0.3, "y": 0.12},
+                            {"x": 0.4, "y": 0.2}
+                        ],
+                        "style": {"strokeColor": 4283782911, "strokeWidth": 4}
+                    }
+                }
+            ]
+        },
+        {
+            "id": "CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC",
+            "name": "Subjects",
+            "isVisible": true,
+            "opacity": 1.0,
+            "blendMode": "normal",
+            "shapes": [
+                {
+                    "extractedSubject": {
+                        "id": "88888888-8888-8888-8888-888888888888",
+                        "assetKey": "abc123def456",
+                        "bounds": {"x": 0.2, "y": 0.3, "width": 0.4, "height": 0.5},
+                        "opacity": 1.0,
+                        "transform": {"offset": {"x": 0.05, "y": -0.02}, "scale": 1.1, "rotation": 15.0}
+                    }
+                }
+            ]
+        }
+    ],
+    "activeLayerId": "BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB",
+    "cropRegion": {"x": 0.05, "y": 0.05, "width": 0.9, "height": 0.9}
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- macOS grid: 824 body inset 100; marks on a 256-unit grid (multiples of 8) -->
+  <!-- The original NoDraw orange: #ff8900 at the centre fading to #f68103, as on the icon before the dev tile. -->
+  <radialGradient id="tile" gradientUnits="userSpaceOnUse" cx="512" cy="512" r="386">
+    <stop offset="0" stop-color="#ff8900"/>
+    <stop offset="1" stop-color="#f68103"/>
+  </radialGradient>
+  <rect x="100" y="100" width="824" height="824" rx="184" fill="url(#tile)"/>
+  <g fill="#ffffff">
+    <polygon points="248,248 440,248 440,328 328,328 328,440 248,440"/>
+    <polygon points="776,776 584,776 584,696 696,696 696,584 776,584"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="64" stroke-linecap="butt">
+    <path d="M432 640 V376"/>
+    <path d="M432 488 A80 80 0 0 1 592 488 V640"/>
+  </g>
+</svg>

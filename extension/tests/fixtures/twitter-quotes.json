@@ -1,0 +1,32 @@
+[
+  {
+    "name": "classic quote",
+    "post": { "id": "100", "handle": "outer", "text": "Outer post", "media": ["own.jpg"], "quote": {
+      "id": "101", "handle": "a", "text": "Quoted photo", "media": ["quoted.jpg"]
+    } },
+    "mediaLevels": [0, 1]
+  },
+  {
+    "name": "nested quote",
+    "post": { "id": "200", "handle": "outer", "text": "Outer post", "media": ["own.jpg"], "quote": {
+      "id": "201", "handle": "a", "text": "First quote", "media": ["first.jpg"], "quote": {
+        "id": "202", "handle": "b", "text": "Nested GIF", "media": [], "gif": "Nested123"
+      }
+    } },
+    "mediaLevels": [0, 1, 2]
+  },
+  {
+    "name": "text-only quote of a photo post",
+    "post": { "id": "300", "handle": "outer", "text": "Just commentary", "media": [], "quote": {
+      "id": "301", "handle": "a", "text": "Photo post", "media": ["quoted.jpg"]
+    } },
+    "mediaLevels": [1]
+  },
+  {
+    "name": "photo post quoting a text post",
+    "post": { "id": "400", "handle": "outer", "text": "Own photo", "media": ["own.jpg"], "quote": {
+      "id": "401", "handle": "a", "text": "Just text", "media": []
+    } },
+    "mediaLevels": [0]
+  }
+]

@@ -1,1 +1,42 @@
+# Build
+.build/
+build/
+swift/
+DerivedData/
+.swiftpm/
+.scratch/
+dist/
+
+# macOS
 .DS_Store
+*.xcuserstate
+
+# User data
+*.db
+Sources/MediaViewer/Services/BuildInfo.generated.swift
+
+# Python server
+server/venv/
+server/__pycache__/
+server/**/__pycache__/
+server/dist/
+server/*.egg-info/
+.pytest_cache/
+
+# Extension build artifacts
+extension/web-ext-artifacts/
+extension/node_modules/
+*.xpi
+
+# Nested GitHub metadata from packaged/browser-extension directories
+*/.github/
+*/*/.github/
+
+# Logs
+log.txt
+
+# Claude dev artifacts
+.claude/
+
+# Local progress page (contains library thumbnails)
+/reports/

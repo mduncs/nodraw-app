@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>NoDraw</string>
+	<key>CFBundleExecutable</key>
+	<string>NoDraw</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.nodraw.app</string>
+	<key>CFBundleName</key>
+	<string>NoDraw</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1</string>
+	<key>CFBundleVersion</key>
+	<string>1.1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSSupportsAutomaticTermination</key>
+	<true/>
+	<key>NSSupportsSuddenTermination</key>
+	<true/>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>NoDraw Item</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.nodraw.item</string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>NoDraw Tag</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.nodraw.tag</string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
+	</array>
+</dict>
+</plist>
