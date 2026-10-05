@@ -13,6 +13,10 @@ I wanted a better media downloader, and that turned into needing an organizer. I
 
 NoDraw is personal software. I built it with AI coding agents for my own use: to keep a large archive of images and video saved from the web browsable, searchable and tagged on my Mac. Take what's useful. It's unsupported, and I'm not promising fixes.
 
+<p align="center">
+  <img src="assets/nodraw-demo.gif" width="720" alt="NoDraw demo loop: searching a local media archive and opening an item">
+</p>
+
 ## What it is
 
 NoDraw is a native macOS app for a folder of media files that each carry a Markdown sidecar: source URL, author, dates, tags and notes in YAML frontmatter, readable in any text editor or Obsidian vault. The app indexes that folder into SQLite, analyses every file on the Mac, and presents it as a dense visual reference library. A browser extension and a small local server capture posts from the web into the same folder.
